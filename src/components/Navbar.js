@@ -14,7 +14,7 @@ import {
 } from "mdb-react-ui-kit";
 
 export default function Navbar() {
-  const [showBasic, setShowBasic] = useState(false);
+  const [showBasic, setShowBasic] = useState(false); 
   return (
     <div>
       <MDBNavbar expand="lg" fixed="top" light className="nav">
@@ -45,7 +45,7 @@ export default function Navbar() {
                 </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink active href="termsAndConditions">
+                <MDBNavbarLink active href="/termsAndConditions">
                   Terms and Conditions
                 </MDBNavbarLink>
               </MDBNavbarItem>
