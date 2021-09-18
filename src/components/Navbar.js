@@ -57,14 +57,15 @@ export default function Navbar() {
             </MDBNavbarNav>
             <MDBNavbarNav className="d-flex input-group w-auto text-center">
               <MDBNavbarItem>
-                <MDBNavbarLink active href="/contactUs">
+                <MDBNavbarLink active href="tel:9943521020">
                   <MDBIcon fas icon="phone-square" size="2x" />
                 </MDBNavbarLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
             <MDBNavbarNav className="d-flex input-group w-auto text-center">
               <MDBNavbarItem>
-                <MDBNavbarLink active href="/contactUs">
+                <MDBNavbarLink active target="_blank"
+                href="https://wa.me/+919943521020">
                   <MDBIcon fab icon="whatsapp" size="2x" />
                 </MDBNavbarLink>
               </MDBNavbarItem>

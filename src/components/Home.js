@@ -22,6 +22,7 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import Footer from "./Footer";
 
 const useStyles = makeStyles((theme) => ({
   form: {},
@@ -50,254 +51,259 @@ export default function Home() {
 
   const [changeTrip, setChangeTrip] = useState(true);
   return (
-    <div style={{ padding: 16, margin: "auto", maxWidth: 850 }}>
+    <>
       <div style={{ marginBottom: "70px" }}>
         <Navbar />
       </div>
-      <h2 style={{ textAlign: "center" }}>CIAo Welcomes You</h2>
-      <Grid container spacing={3}>
-        <Grid item xs={6}>
-          <Button
-            style={{ width: "150px", margin: "0 auto", display: "flex" }}
-            size="large"
-            variant="outlined"
-            color="primary"
-            onClick={() => setChangeTrip(true)}
-          >
-            One Way
-          </Button>
+      <div style={{ padding: 16, margin: "auto", maxWidth: 850 }}>
+        <h2 style={{ textAlign: "center" }}>CIAo Welcomes You</h2>
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <Button
+              style={{ width: "150px", margin: "0 auto", display: "flex" }}
+              size="large"
+              variant="outlined"
+              color="primary"
+              onClick={() => setChangeTrip(true)}
+            >
+              One Way
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              style={{ width: "150px", margin: "0 auto", display: "flex" }}
+              size="large"
+              variant="outlined"
+              color="secondary"
+              onClick={() => setChangeTrip(false)}
+            >
+              Round Trip
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <Button
-            style={{ width: "150px", margin: "0 auto", display: "flex" }}
-            size="large"
-            variant="outlined"
-            color="secondary"
-            onClick={() => setChangeTrip(false)}
-          >
-            Round Trip
-          </Button>
-        </Grid>
-      </Grid>
-      {changeTrip ? (
-        <>
-          <Card
-            className={classes.card1}
-            variant="outlined"
-            style={{ marginTop: "20px" }}
-          >
-            <CardContent>
-              <Grid container alignItems="flex-start" spacing={2}>
-                <Grid item xs={6}>
-                  <TextField
-                    fullWidth
-                    className={classes.form}
-                    required
-                    id="standard-basic1"
-                    label="From"
-                    type="text"
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    fullWidth
-                    className={classes.form}
-                    required
-                    id="standard-basic2"
-                    label="To"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    className={classes.form}
-                    fullWidth
-                    required
-                    id="standard-basic3"
-                    label="Mobile Number"
-                  />
-                </Grid>
-                <Grid item xs={12} style={{ marginTop: "20px" }}>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">
-                      Select your vehicle type
-                    </FormLabel>
-                    <RadioGroup
-                      aria-label="vehicletype"
-                      name="vehicletype"
-                      value={value}
-                      onChange={handleChange}
-                      row
-                    >
-                      <Grid item xs={6}>
-                        <FormControlLabel
-                          value="Sedan"
-                          control={<Radio />}
-                          label="Sedan"
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <FormControlLabel
-                          value="XUV"
-                          control={<Radio />}
-                          label="XUV"
-                        />
-                      </Grid>
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        {changeTrip ? (
+          <>
+            <Card
+              className={classes.card1}
+              variant="outlined"
+              style={{ marginTop: "20px" }}
+            >
+              <CardContent>
+                <Grid container alignItems="flex-start" spacing={2}>
                   <Grid item xs={6}>
-                    <KeyboardDatePicker
+                    <TextField
                       fullWidth
-                      margin="normal"
-                      id="date-picker-dialog"
-                      label="Date picker dialog"
-                      format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{
-                        "aria-label": "change date",
-                      }}
+                      className={classes.form}
+                      required
+                      id="standard-basic1"
+                      label="From"
+                      type="text"
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <KeyboardTimePicker
+                    <TextField
                       fullWidth
-                      margin="normal"
-                      id="time-picker"
-                      label="Time picker"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{
-                        "aria-label": "change time",
-                      }}
+                      className={classes.form}
+                      required
+                      id="standard-basic2"
+                      label="To"
                     />
                   </Grid>
-                </MuiPickersUtilsProvider>
-              </Grid>
-            </CardContent>
-            <CardActions>
-              <Button
-                style={{ width: "550px", margin: "0 auto", display: "flex" }}
-                size="large"
-                variant="contained"
-                color="primary"
-              >
-                Book Your One way Trip
-              </Button>
-            </CardActions>
-          </Card>
-        </>
-      ) : (
-        <>
-          <Card
-            className={classes.card2}
-            variant="outlined"
-            style={{ marginTop: "20px" }}
-          >
-            <CardContent>
-              <Grid container alignItems="flex-start" spacing={2}>
-                <Grid item xs={6}>
-                  <TextField
-                    fullWidth
-                    className={classes.form}
-                    required
-                    id="standard-basic1"
-                    label="From"
-                    type="text"
-                  />
+                  <Grid item xs={12}>
+                    <TextField
+                      className={classes.form}
+                      fullWidth
+                      required
+                      id="standard-basic3"
+                      label="Mobile Number"
+                    />
+                  </Grid>
+                  <Grid item xs={12} style={{ marginTop: "20px" }}>
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Select your vehicle type
+                      </FormLabel>
+                      <RadioGroup
+                        aria-label="vehicletype"
+                        name="vehicletype"
+                        value={value}
+                        onChange={handleChange}
+                        row
+                      >
+                        <Grid item xs={6}>
+                          <FormControlLabel
+                            value="Sedan"
+                            control={<Radio />}
+                            label="Sedan"
+                          />
+                        </Grid>
+                        <Grid item xs={6}>
+                          <FormControlLabel
+                            value="XUV"
+                            control={<Radio />}
+                            label="XUV"
+                          />
+                        </Grid>
+                      </RadioGroup>
+                    </FormControl>
+                  </Grid>
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <Grid item xs={6}>
+                      <KeyboardDatePicker
+                        fullWidth
+                        margin="normal"
+                        id="date-picker-dialog"
+                        label="Date picker dialog"
+                        format="MM/dd/yyyy"
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        KeyboardButtonProps={{
+                          "aria-label": "change date",
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <KeyboardTimePicker
+                        fullWidth
+                        margin="normal"
+                        id="time-picker"
+                        label="Time picker"
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        KeyboardButtonProps={{
+                          "aria-label": "change time",
+                        }}
+                      />
+                    </Grid>
+                  </MuiPickersUtilsProvider>
                 </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    fullWidth
-                    className={classes.form}
-                    required
-                    id="standard-basic2"
-                    label="To"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    className={classes.form}
-                    fullWidth
-                    required
-                    id="standard-basic3"
-                    label="Mobile Number"
-                  />
-                </Grid>
-                <Grid item xs={12} style={{ marginTop: "20px" }}>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">
-                      Select your vehicle type
-                    </FormLabel>
-                    <RadioGroup
-                      aria-label="vehicletype"
-                      name="vehicletype"
-                      value={value}
-                      onChange={handleChange}
-                      row
-                    >
-                      <Grid item xs={6}>
-                        <FormControlLabel
-                          value="Sedan"
-                          control={<Radio />}
-                          label="Sedan"
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <FormControlLabel
-                          value="XUV"
-                          control={<Radio />}
-                          label="XUV"
-                        />
-                      </Grid>
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              </CardContent>
+              <CardActions>
+                <Button
+                  style={{ width: "550px", margin: "0 auto", display: "flex" }}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  Book Your One way Trip
+                </Button>
+              </CardActions>
+            </Card>
+          </>
+        ) : (
+          <>
+            <Card
+              className={classes.card2}
+              variant="outlined"
+              style={{ marginTop: "20px" }}
+            >
+              <CardContent>
+                <Grid container alignItems="flex-start" spacing={2}>
                   <Grid item xs={6}>
-                    <KeyboardDatePicker
+                    <TextField
                       fullWidth
-                      margin="normal"
-                      id="date-picker-dialog"
-                      label="Date picker dialog"
-                      format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{
-                        "aria-label": "change date",
-                      }}
+                      className={classes.form}
+                      required
+                      id="standard-basic1"
+                      label="From"
+                      type="text"
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <KeyboardTimePicker
+                    <TextField
                       fullWidth
-                      margin="normal"
-                      id="time-picker"
-                      label="Time picker"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{
-                        "aria-label": "change time",
-                      }}
+                      className={classes.form}
+                      required
+                      id="standard-basic2"
+                      label="To"
                     />
                   </Grid>
-                </MuiPickersUtilsProvider>
-              </Grid>
-            </CardContent>
-            <CardActions>
-              <Button
-                style={{ width: "550px", margin: "0 auto", display: "flex" }}
-                size="large"
-                variant="contained"
-                color="secondary"
-              >
-                Book Your Round Trip
-              </Button>
-            </CardActions>
-          </Card>
-        </>
-      )}
-    </div>
+                  <Grid item xs={12}>
+                    <TextField
+                      className={classes.form}
+                      fullWidth
+                      required
+                      id="standard-basic3"
+                      label="Mobile Number"
+                    />
+                  </Grid>
+                  <Grid item xs={12} style={{ marginTop: "20px" }}>
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Select your vehicle type
+                      </FormLabel>
+                      <RadioGroup
+                        aria-label="vehicletype"
+                        name="vehicletype"
+                        value={value}
+                        onChange={handleChange}
+                        row
+                      >
+                        <Grid item xs={6}>
+                          <FormControlLabel
+                            value="Sedan"
+                            control={<Radio />}
+                            label="Sedan"
+                          />
+                        </Grid>
+                        <Grid item xs={6}>
+                          <FormControlLabel
+                            value="XUV"
+                            control={<Radio />}
+                            label="XUV"
+                          />
+                        </Grid>
+                      </RadioGroup>
+                    </FormControl>
+                  </Grid>
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <Grid item xs={6}>
+                      <KeyboardDatePicker
+                        fullWidth
+                        margin="normal"
+                        id="date-picker-dialog"
+                        label="Date picker dialog"
+                        format="MM/dd/yyyy"
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        KeyboardButtonProps={{
+                          "aria-label": "change date",
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <KeyboardTimePicker
+                        fullWidth
+                        margin="normal"
+                        id="time-picker"
+                        label="Time picker"
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        KeyboardButtonProps={{
+                          "aria-label": "change time",
+                        }}
+                      />
+                    </Grid>
+                  </MuiPickersUtilsProvider>
+                </Grid>
+              </CardContent>
+              <CardActions>
+                <Button
+                  style={{ width: "550px", margin: "0 auto", display: "flex" }}
+                  size="large"
+                  variant="contained"
+                  color="secondary"
+                >
+                  Book Your Round Trip
+                </Button>
+              </CardActions>
+            </Card>
+          </>
+        )}
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 }
