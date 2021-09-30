@@ -61,13 +61,14 @@ export default function ContactUs() {
           <div class="col">
             <div class="d-flex justify-content-center mb-4 mt-2">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.2157156095545!2d77.42201881410064!3d8.18101160394669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f0df586f9397%3A0x5f1c37da9aa6f9d0!2sTelecome%20Office!5e0!3m2!1sen!2sin!4v1597918697408!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.651666043824!2d80.1686781141354!3d12.994117217901227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525e1f5da86397%3A0x21092f216ee26e47!2sChennai%20International%20Airport!5e0!3m2!1sen!2sin!4v1632995621130!5m2!1sen!2sin"
                 width="600"
                 height="450"
                 frameborder="0"
                 allowfullscreen=""
                 aria-hidden="false"
                 tabindex="0"
+                title="Contact Address"
               ></iframe>
             </div>
           </div>
