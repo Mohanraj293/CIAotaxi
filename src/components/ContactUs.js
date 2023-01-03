@@ -1,5 +1,5 @@
 import React from "react";
-
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 export default function ContactUs() {
@@ -73,6 +73,9 @@ export default function ContactUs() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

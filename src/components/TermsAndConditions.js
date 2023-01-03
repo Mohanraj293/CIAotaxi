@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 export default function TermsAndConditions() {
   document.title = "Terms And Conditions";
@@ -29,6 +30,9 @@ export default function TermsAndConditions() {
           Point(Places where we start).
         </li>
       </ul>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

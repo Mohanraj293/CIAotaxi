@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 export default function Tarrif() {
@@ -74,6 +74,9 @@ export default function Tarrif() {
             </tr>
           </tbody>
         </Table>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
