@@ -20,7 +20,7 @@ export default function Navbar() {
       <MDBNavbar expand="lg" fixed="top" light className="nav">
         <MDBContainer fluid>
           <MDBNavbarBrand>
-            <NavLink to="/" style={}>
+            <NavLink to="/">
               <img src={logo} alt="..." height="50" />
             </NavLink>
           </MDBNavbarBrand>
