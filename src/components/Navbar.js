@@ -9,9 +9,9 @@ import {
   MDBIcon,
   MDBNavbarNav,
   MDBNavbarItem,
-  MDBNavbarLink,
   MDBCollapse,
 } from "mdb-react-ui-kit";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [showBasic, setShowBasic] = useState(false); 
@@ -19,8 +19,10 @@ export default function Navbar() {
     <div>
       <MDBNavbar expand="lg" fixed="top" light className="nav">
         <MDBContainer fluid>
-          <MDBNavbarBrand href="/">
-            <img src={logo} alt="..." height="50" />
+          <MDBNavbarBrand>
+            <NavLink to="/" style={}>
+              <img src={logo} alt="..." height="50" />
+            </NavLink>
           </MDBNavbarBrand>
 
           <MDBNavbarToggler
@@ -35,39 +37,39 @@ export default function Navbar() {
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav className="justify-content-center text-center mb-2 mb-lg-0">
               <MDBNavbarItem>
-                <MDBNavbarLink active aria-current="page" href="/">
+                <NavLink className="navlink" to="/">
                   Home
-                </MDBNavbarLink>
+                </NavLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink active href="/tarrifs">
+                <NavLink className="navlink" to="/tarrifs">
                   Tarrifs
-                </MDBNavbarLink>
+                </NavLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink active href="/termsAndConditions">
+                <NavLink className="navlink" to="/termsAndConditions">
                   Terms and Conditions
-                </MDBNavbarLink>
+                </NavLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink active href="/contactUs">
+                <NavLink className="navlink" to="/contactUs">
                   Contact Us
-                </MDBNavbarLink>
+                </NavLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
             <MDBNavbarNav className="d-flex input-group w-auto text-center">
               <MDBNavbarItem>
-                <MDBNavbarLink active href="tel:9943521020">
+                <NavLink active to="tel:9943521020">
                   <MDBIcon fas icon="phone-square" size="2x" />
-                </MDBNavbarLink>
+                </NavLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
             <MDBNavbarNav className="d-flex input-group w-auto text-center">
               <MDBNavbarItem>
-                <MDBNavbarLink active target="_blank"
+                <NavLink active target="_blank"
                 href="https://wa.me/+919943521020">
                   <MDBIcon fab icon="whatsapp" size="2x" />
-                </MDBNavbarLink>
+                </NavLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>

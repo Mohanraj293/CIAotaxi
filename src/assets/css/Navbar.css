@@ -4,3 +4,13 @@
   padding-bottom: 5px !important;
   background-color: #e8aa23;
 }
+.navlink {
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.navlink:hover {
+  background-color: #19045a;
+  color: white !important;
+}
