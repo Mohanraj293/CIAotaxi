@@ -1,0 +1,10 @@
+.body {
+    padding: 50px;
+}
+.terms {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+
+}
