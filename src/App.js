@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import Tarrifs from "./components/Tarrif";
+// import Tarrifs from "./components/Tarrif";
 import TermsAndConditions from "./components/TermsAndConditions";
 import ContactUs from "./components/ContactUs";
 import AppLayout from "./components/AppLayout";
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayout/>}>
             <Route index element={<Home title="Home"/>}></Route>
-            <Route path="/tarrifs" element={<Tarrifs title="Tarrifs"/>}></Route>
+            {/* <Route path="/tarrifs" element={<Tarrifs title="Tarrifs"/>}></Route> */}
             <Route path="/termsAndConditions" element={<TermsAndConditions title="Terms And Conditions"/>}></Route>
             <Route path="/contactUs" element={<ContactUs title="contact Us"/>}></Route>
           </Route>

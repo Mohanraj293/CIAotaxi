@@ -9,15 +9,15 @@ export default function ContactUs() {
       <div style={{ marginBottom: "70px" }}>
         <Navbar />
       </div>
-      <h1 class="text-center">CONTACT US</h1>
-      <div class="container mt-4">
-        <div class="row">
-          <div class="col mt-4">
+      <h1 className="text-center">CONTACT US</h1>
+      <div className="container mt-4">
+        <div className="row">
+          <div className="col mt-4">
             <h5>
-              <i class="fa fa-location-arrow" aria-hidden="true"></i> ADDRESS
-              FOR CORRESPONDENCE:
+              <i className="fa fa-location-arrow" aria-hidden="true"></i>{" "}
+              ADDRESS FOR CORRESPONDENCE:
             </h5>
-            <div class="container">
+            <div className="container">
               <h6> NO.E/56, Watertank road</h6>
               <h6> Opp. BSNL Tele. Exchange </h6>
               <h6> Kesari Street, Nagercoil, Kanyakumari District</h6>
@@ -25,25 +25,25 @@ export default function ContactUs() {
             </div>
             <br />
             <h5>
-              <i class="fa fa-envelope" aria-hidden="true"></i> EMAIL ID
+              <i className="fa fa-envelope" aria-hidden="true"></i> EMAIL ID
             </h5>
-            <div class="container">
+            <div className="container">
               <h6>Forum : capeforumyoutrust@gmail.com </h6>
               <h6>Trust : ofbyandforyou@gmail.com</h6>
             </div>
             <br />
             <h5>
-              <i class="fa fa-phone" aria-hidden="true"></i> CONTACT:
+              <i className="fa fa-phone" aria-hidden="true"></i> CONTACT:
             </h5>
-            <div class="container">
+            <div className="container">
               <h6>
-                Mobile :{" "}
+                Mobile :
                 <a
                   style={{ color: "#4f4f4f", textDecoration: "underline" }}
                   href="tel:9943521020"
                 >
                   9943521020
-                </a>{" "}
+                </a>
                 <br />
               </h6>
               <h6>
@@ -51,24 +51,23 @@ export default function ContactUs() {
                 <a
                   style={{ color: "#4f4f4f", textDecoration: "underline" }}
                   href="https://wa.me/+919943521020"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  {" "}
                   95852 12775
                 </a>
               </h6>
             </div>
           </div>
-          <div class="col">
-            <div class="d-flex justify-content-center mb-4 mt-2">
+          <div className="col">
+            <div className="d-flex justify-content-center mb-4 mt-2">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.651666043824!2d80.1686781141354!3d12.994117217901227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525e1f5da86397%3A0x21092f216ee26e47!2sChennai%20International%20Airport!5e0!3m2!1sen!2sin!4v1632995621130!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d646.72537148913!2d80.20556728198787!3d12.75949274508031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52512096aa8145%3A0xc4c50372cc3c05e!2sTower%2015!5e0!3m2!1sen!2sin!4v1690120077544!5m2!1sen!2sin"
                 width="600"
                 height="450"
-                frameborder="0"
-                allowfullscreen=""
-                aria-hidden="false"
-                tabindex="0"
-                title="Contact Address"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>
