@@ -3,24 +3,71 @@ import React from "react";
 // import Tarrifs from "./components/Tarrif";
 import TermsAndConditions from "./components/TermsAndConditions";
 import ContactUs from "./components/ContactUs";
-import AppLayout from "./components/AppLayout";
-import PageNotFound from "./components/PageNotFound";
+// import PageNotFound from "./components/PageNotFound";
 import Home from "./components/Home";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { Fab } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { WhatsApp, Phone } from "@mui/icons-material";
 
 function App() {
+  const useStyles = makeStyles((theme) => ({
+    fabwhatsapp: {
+      position: "fixed",
+      bottom: theme.spacing(2),
+      right: theme.spacing(2),
+      background: "#00a884",
+      "&:hover": {
+        backgroundColor: "#00a884",
+      },
+    },
+    fabphone: {
+      position: "fixed",
+      bottom: theme.spacing(10),
+      right: theme.spacing(2),
+      background: "#243296",
+      "&:hover": {
+        backgroundColor: "#243296",
+      },
+    },
+  }));
+  const handleWhatsApp = () => {
+    const whatsappUrl = `https://wa.me/+919943521020`;
+    window.open(whatsappUrl, "_blank");
+  };
+  const handlePhoneCall = () => {
+    const phoneUrl = `tel:+919943521020`;
+    window.open(phoneUrl, "_blank");
+  };
+  const classes = useStyles();
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route path="/" element={<AppLayout/>}>
-            <Route index element={<Home title="Home"/>}></Route>
-            {/* <Route path="/tarrifs" element={<Tarrifs title="Tarrifs"/>}></Route> */}
-            <Route path="/termsAndConditions" element={<TermsAndConditions title="Terms And Conditions"/>}></Route>
-            <Route path="/contactUs" element={<ContactUs title="contact Us"/>}></Route>
-          </Route>
-          <Route exact path="*" element={<PageNotFound title="Ithu tha thavarana visayam"/>}></Route>
-        </Routes>
+        <Navbar />
+        <Home title="Home" />
+        {/* <Route path="/tarrifs" element={<Tarrifs title="Tarrifs"/>}></Route> */}
+        <TermsAndConditions title="Terms And Conditions" />
+        <ContactUs title="contact Us" />
+        <Footer />
+        {/* <PageNotFound title="Ithu tha thavarana visayam" /> */}
+        <Fab
+          color="primary"
+          aria-label="add"
+          className={classes.fabwhatsapp}
+          onClick={handleWhatsApp}
+        >
+          <WhatsApp />
+        </Fab>
+        <Fab
+          color="primary"
+          aria-label="add"
+          className={classes.fabphone}
+          onClick={handlePhoneCall}
+        >
+          <Phone />
+        </Fab>
       </Router>
     </div>
   );

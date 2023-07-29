@@ -10,21 +10,21 @@ import {
   MDBNavbarItem,
   MDBCollapse,
 } from "mdb-react-ui-kit";
-import { NavLink } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 
 export default function Navbar() {
   const [showBasic, setShowBasic] = useState(false);
   const navBarStyleContainer = {
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
   };
 
   return (
-    <div>
+    <div style={{ marginBottom: "70px" }}>
       <MDBNavbar expand="lg" fixed="top" light className="nav">
         <MDBContainer fluid>
-          <NavLink to="/" style={navBarStyleContainer}>
+          <Link to="/" style={navBarStyleContainer}>
             <img src={logo} alt="..." height="50" />
-          </NavLink>
+          </Link>
 
           <MDBNavbarToggler
             aria-controls="navbarSupportedContent"
@@ -38,9 +38,9 @@ export default function Navbar() {
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav className="justify-content-center text-center mb-2 mb-lg-0">
               <MDBNavbarItem>
-                <NavLink className="navlink" aria-current="page" to="/">
+                <Link className="navlink" aria-current="page" to="#" smooth>
                   Home
-                </NavLink>
+                </Link>
               </MDBNavbarItem>
               {/* <MDBNavbarItem>
                 <NavLink className="navlink" to="/tarrifs">
@@ -48,14 +48,14 @@ export default function Navbar() {
                 </NavLink>
               </MDBNavbarItem> */}
               <MDBNavbarItem>
-                <NavLink className="navlink" to="/termsAndConditions">
+                <Link className="navlink" to="#terms" smooth>
                   Terms and Conditions
-                </NavLink>
+                </Link>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <NavLink className="navlink" to="/contactUs">
+                <Link className="navlink" to="#contact" smooth>
                   Contact Us
-                </NavLink>
+                </Link>
               </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>

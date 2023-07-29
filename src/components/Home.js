@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import Navbar from "./Navbar";
 import "../assets/css/Home.css";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -22,7 +21,6 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { format, addDays } from "date-fns";
-import Footer from "./Footer";
 import DialogBox from "./DialogBox";
 
 const useStyles = makeStyles(() => ({
@@ -102,12 +100,9 @@ export default function Home() {
 
   document.title = "CIAo Taxi";
   return (
-    <>
-      <div style={{ marginBottom: "70px" }}>
-        <Navbar />
-      </div>
+    <section id="home">
       <div style={{ padding: 16, margin: "auto", maxWidth: 800 }}>
-        <h2 style={{ textAlign: "center" }}>CIAo Welcomes You</h2>
+        <h2 style={{ textAlign: "center" }}>Book Your CIAo Ride</h2>
         <form onSubmit={handleSubmit}>
           <Card
             className={classes.card1}
@@ -242,10 +237,7 @@ export default function Home() {
           </Card>
         </form>
       </div>
-      <div>
-        <Footer />
-      </div>
       <DialogBox ref={ChildRef} />
-    </>
+    </section>
   );
 }

@@ -1,10 +1,12 @@
 .body {
-    padding: 50px;
+  padding: 100px;
 }
 .terms {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: 50px;
-
+  flex-wrap: "wrap";
+  align-items: center;
+  justify-content: center;
+}
+.cont {
+  align-items: center;
+  justify-content: center;
 }
