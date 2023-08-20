@@ -4,7 +4,7 @@ export default function ContactUs() {
   document.title = "Contact Us";
   return (
     <section id="contact">
-      <div style={{ marginBottom: "70px" }}></div>
+      <div style={{ marginBottom: "40px" }}></div>
       <h2 className="text-center">Contact us</h2>
       <div className="container mt-4">
         <div className="row">

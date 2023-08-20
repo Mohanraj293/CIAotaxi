@@ -42,11 +42,6 @@ export default function Navbar() {
                   Home
                 </Link>
               </MDBNavbarItem>
-              {/* <MDBNavbarItem>
-                <NavLink className="navlink" to="/tarrifs">
-                  Tarrifs
-                </NavLink>
-              </MDBNavbarItem> */}
               <MDBNavbarItem>
                 <Link className="navlink" to="#terms" smooth>
                   Terms and Conditions

@@ -1,12 +1,11 @@
 .body {
-  padding: 100px;
+  padding: 16px;
+  margin: auto;
+  max-width: 800px;
 }
 .terms {
   flex-wrap: "wrap";
   align-items: center;
   justify-content: center;
-}
-.cont {
-  align-items: center;
-  justify-content: center;
+  padding: 5px;
 }

@@ -7,7 +7,6 @@ export default function TermsAndConditions() {
     <section id="terms">
       <div className="body">
         <h2 style={{ textAlign: "center" }}>Terms and Conditions</h2>
-        <div className="cont">
           <ul className="terms">
             <li>Toll Fees, Inter-State Permit charges (if any) are extra.</li>
             <li>
@@ -31,7 +30,6 @@ export default function TermsAndConditions() {
             </li>
           </ul>
         </div>
-      </div>
     </section>
   );
 }
