@@ -81,6 +81,8 @@ export default function Home() {
       pickUpDate: format(formData.pickUpDate, "dd/MM/yyyy"),
       pickUptime: format(formData.pickUpDate, "HH:mm"),
       isPickupCompleted: false,
+      takeRide: 0,
+      createdAt: format(new Date(), "dd/MM/yyyy HH:mm"),
     };
     set(ref(db, "bookings/" + userData.id), userData)
       .then(() => {
@@ -93,9 +95,10 @@ export default function Home() {
           vType: "Mini",
           pickUpDate: new Date(),
           pickUptime: new Date(),
+          takeRide: 0,
         });
         ChildRef.current.handleOpen(
-          "Your cab is bokked..!",
+          "Your cab is booked..!",
           "The assigned driver will contact you soon..!"
         );
       })
