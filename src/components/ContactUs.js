@@ -7,7 +7,7 @@ export default function ContactUs() {
       <h2 className="text-center">Contact us</h2>
       <div className="container mt-4">
         <div className="row">
-          <div>
+          <div className="col mt-4">
             <h5>
               <i className="fa fa-location-arrow" aria-hidden="true"></i> Find
               Us Here
