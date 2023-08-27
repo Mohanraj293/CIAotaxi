@@ -7,7 +7,6 @@ import {
   MDBNavbarToggler,
   MDBIcon,
   MDBNavbarNav,
-  MDBNavbarItem,
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import { HashLink as Link } from "react-router-hash-link";
@@ -18,11 +17,23 @@ export default function Navbar() {
     backgroundColor: "transparent",
   };
 
+  const closeNavbar = () => {
+    setShowBasic(false);
+  };
+
+  //thats why put it in another funtion to prevent shrinking.
+  const handleNavLinkClick = () => {
+    closeNavbar();
+  };
   return (
     <div style={{ marginBottom: "70px" }}>
       <MDBNavbar expand="lg" fixed="top" light className="nav">
         <MDBContainer fluid>
-          <Link to="/" style={navBarStyleContainer}>
+          <Link
+            onClick={handleNavLinkClick}
+            to="#"
+            style={navBarStyleContainer}
+          >
             <img src={logo} alt="..." height="50" />
           </Link>
 
@@ -36,22 +47,21 @@ export default function Navbar() {
           </MDBNavbarToggler>
 
           <MDBCollapse navbar show={showBasic}>
-            <MDBNavbarNav className="justify-content-center text-center mb-2 mb-lg-0">
-              <MDBNavbarItem>
-                <Link className="navlink" aria-current="page" to="#" smooth>
-                  Home
-                </Link>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <Link className="navlink" to="#terms" smooth>
-                  Terms and Conditions
-                </Link>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <Link className="navlink" to="#contact" smooth>
-                  Contact Us
-                </Link>
-              </MDBNavbarItem>
+            <MDBNavbarNav
+              className="justify-content-center text-center mb-2 mb-lg-0"
+              onClick={handleNavLinkClick}
+            >
+              <Link className="navlink" aria-current="page" to="#" smooth>
+                Home
+              </Link>
+
+              <Link className="navlink" to="#terms" smooth>
+                Terms and Conditions
+              </Link>
+
+              <Link className="navlink" to="#contact" smooth>
+                Contact Us
+              </Link>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>

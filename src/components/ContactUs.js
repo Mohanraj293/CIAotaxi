@@ -4,11 +4,10 @@ export default function ContactUs() {
   document.title = "Contact Us";
   return (
     <section id="contact">
-      <div style={{ marginBottom: "40px" }}></div>
       <h2 className="text-center">Contact us</h2>
       <div className="container mt-4">
         <div className="row">
-          <div className="col mt-4">
+          <div>
             <h5>
               <i className="fa fa-location-arrow" aria-hidden="true"></i> Find
               Us Here
@@ -24,7 +23,7 @@ export default function ContactUs() {
               <i className="fa fa-envelope" aria-hidden="true"></i> EMAIL ID
             </h5>
             <div className="container">
-              <h6>Forum : ciao.taxi.chennai@gmail.com</h6>
+              <h6>Mail Us: ciaocabservice@gmail.com</h6>
             </div>
           </div>
           <div className="col">

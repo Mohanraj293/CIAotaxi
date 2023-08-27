@@ -109,9 +109,9 @@ export default function Home() {
 
   document.title = "CIAo Taxi";
   return (
-    <section id="home">
+    <section id="home" className="home">
       <div style={{ padding: 16, margin: "auto", maxWidth: 800 }}>
-        <h2 style={{ textAlign: "center" }}>Book Your CIAo Ride</h2>
+        <h2 style={{ textAlign: "center" }}>Book Your CIAo Cab or Call Driver</h2>
         <form onSubmit={handleSubmit}>
           <Card
             className={classes.card1}
@@ -166,8 +166,10 @@ export default function Home() {
                     label="Mobile Number"
                     name="phoneNumber"
                     type="number"
+                    pattern="[0-9]{10}"
                     onChange={handleChange}
                     value={formData.phoneNumber}
+                    onInvalid={(e) => e.target.setCustomValidity("Enter 10 digit number")}
                   />
                 </Grid>
                 <Grid item xs={12} style={{ marginTop: "20px" }}>
