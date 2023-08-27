@@ -34,11 +34,11 @@ function App() {
     },
   }));
   const handleWhatsApp = () => {
-    const whatsappUrl = `https://wa.me/+919943521020`;
+    const whatsappUrl = `https://wa.me/+919952117115`;
     window.open(whatsappUrl, "_blank");
   };
   const handlePhoneCall = () => {
-    const phoneUrl = `tel:+919943521020`;
+    const phoneUrl = `tel:+919952117115`;
     window.open(phoneUrl, "_blank");
   };
   const classes = useStyles();
