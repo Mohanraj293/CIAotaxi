@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import Navbar from "./Navbar";
 import "../assets/css/Home.css";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -22,9 +21,11 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { format, addDays } from "date-fns";
-import Footer from "./Footer";
 import DialogBox from "./DialogBox";
+import "../firebase/FirebaseConfig";
+import { getDatabase, ref, set } from "firebase/database";
 
+const db = getDatabase();
 const useStyles = makeStyles(() => ({
   form: {},
   card1: {
@@ -40,10 +41,11 @@ export default function Home() {
   const classes = useStyles();
 
   const [formData, setFormData] = useState({
+    id: "",
     from: "",
     to: "",
     name: "",
-    phoneNumeber: "",
+    phoneNumber: "",
     vType: "Mini",
     pickUpDate: new Date(),
     pickUptime: new Date(),
@@ -61,53 +63,55 @@ export default function Home() {
     }
   };
 
+  function generateCustomId(prefix, pickDate) {
+    const timestamp = format(pickDate, "ddMMyy");
+    const randomPart = Math.floor(Math.random() * 10000);
+    return `${prefix}-${timestamp}-${randomPart}`;
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     var userData = {
+      id: generateCustomId(formData.name, formData.pickUpDate),
       from: formData.from,
       to: formData.to,
       name: formData.name,
-      phoneNumeber: parseInt(formData.phoneNumeber),
+      phoneNumber: formData.phoneNumber,
       vType: formData.vType,
       pickUpDate: format(formData.pickUpDate, "dd/MM/yyyy"),
       pickUptime: format(formData.pickUpDate, "HH:mm"),
+      isPickupCompleted: false,
+      takeRide: 0,
+      createdAt: format(new Date(), "dd/MM/yyyy HH:mm"),
     };
-    console.log(userData);
-    let res = await fetch(
-      "https://ciao-taxi-default-rtdb.asia-southeast1.firebasedatabase.app/bookings.json",
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      }
-    );
-    if (res) {
-      setFormData({
-        from: "",
-        to: "",
-        name: "",
-        phoneNumeber: "",
-        vType: "Mini",
-        pickUpDate: new Date(),
-        pickUptime: new Date(),
+    set(ref(db, "bookings/" + userData.id), userData)
+      .then(() => {
+        setFormData({
+          id: "",
+          from: "",
+          to: "",
+          name: "",
+          phoneNumber: "",
+          vType: "Mini",
+          pickUpDate: new Date(),
+          pickUptime: new Date(),
+          takeRide: 0,
+        });
+        ChildRef.current.handleOpen(
+          "Your cab is booked..!",
+          "The assigned driver will contact you soon..!"
+        );
+      })
+      .catch(() => {
+        ChildRef.current.handleOpen("Something Went Wrong", "Pls Try Again");
       });
-      ChildRef.current.handleOpen(
-        "Your cab is bokked..!",
-        "The assigned driver will contact you soon..! Happy Journey"
-      );
-    } else ChildRef.current.handleOpen("Something Went Wrong", "Pls Try Again");
   };
 
   document.title = "CIAo Taxi";
   return (
-    <>
-      <div style={{ marginBottom: "70px" }}>
-        <Navbar />
-      </div>
+    <section id="home" className="home">
       <div style={{ padding: 16, margin: "auto", maxWidth: 800 }}>
-        <h2 style={{ textAlign: "center" }}>CIAo Welcomes You</h2>
+        <h2 style={{ textAlign: "center" }}>Book Your CIAo Cab or Call Driver</h2>
         <form onSubmit={handleSubmit}>
           <Card
             className={classes.card1}
@@ -160,10 +164,12 @@ export default function Home() {
                     required
                     id="standard-basic4"
                     label="Mobile Number"
-                    name="phoneNumeber"
+                    name="phoneNumber"
                     type="number"
+                    pattern="[0-9]{10}"
                     onChange={handleChange}
-                    value={formData.phoneNumeber}
+                    value={formData.phoneNumber}
+                    onInvalid={(e) => e.target.setCustomValidity("Enter 10 digit number")}
                   />
                 </Grid>
                 <Grid item xs={12} style={{ marginTop: "20px" }}>
@@ -242,10 +248,7 @@ export default function Home() {
           </Card>
         </form>
       </div>
-      <div>
-        <Footer />
-      </div>
       <DialogBox ref={ChildRef} />
-    </>
+    </section>
   );
 }

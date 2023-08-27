@@ -7,24 +7,35 @@ import {
   MDBNavbarToggler,
   MDBIcon,
   MDBNavbarNav,
-  MDBNavbarItem,
   MDBCollapse,
 } from "mdb-react-ui-kit";
-import { NavLink } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 
 export default function Navbar() {
   const [showBasic, setShowBasic] = useState(false);
   const navBarStyleContainer = {
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
   };
 
+  const closeNavbar = () => {
+    setShowBasic(false);
+  };
+
+  //thats why put it in another funtion to prevent shrinking.
+  const handleNavLinkClick = () => {
+    closeNavbar();
+  };
   return (
-    <div>
+    <div style={{ marginBottom: "70px" }}>
       <MDBNavbar expand="lg" fixed="top" light className="nav">
         <MDBContainer fluid>
-          <NavLink to="/" style={navBarStyleContainer}>
+          <Link
+            onClick={handleNavLinkClick}
+            to="#"
+            style={navBarStyleContainer}
+          >
             <img src={logo} alt="..." height="50" />
-          </NavLink>
+          </Link>
 
           <MDBNavbarToggler
             aria-controls="navbarSupportedContent"
@@ -36,27 +47,21 @@ export default function Navbar() {
           </MDBNavbarToggler>
 
           <MDBCollapse navbar show={showBasic}>
-            <MDBNavbarNav className="justify-content-center text-center mb-2 mb-lg-0">
-              <MDBNavbarItem>
-                <NavLink className="navlink" aria-current="page" to="/">
-                  Home
-                </NavLink>
-              </MDBNavbarItem>
-              {/* <MDBNavbarItem>
-                <NavLink className="navlink" to="/tarrifs">
-                  Tarrifs
-                </NavLink>
-              </MDBNavbarItem> */}
-              <MDBNavbarItem>
-                <NavLink className="navlink" to="/termsAndConditions">
-                  Terms and Conditions
-                </NavLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <NavLink className="navlink" to="/contactUs">
-                  Contact Us
-                </NavLink>
-              </MDBNavbarItem>
+            <MDBNavbarNav
+              className="justify-content-center text-center mb-2 mb-lg-0"
+              onClick={handleNavLinkClick}
+            >
+              <Link className="navlink" aria-current="page" to="#" smooth>
+                Home
+              </Link>
+
+              <Link className="navlink" to="#terms" smooth>
+                Terms and Conditions
+              </Link>
+
+              <Link className="navlink" to="#contact" smooth>
+                Contact Us
+              </Link>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>
