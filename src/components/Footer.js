@@ -14,9 +14,9 @@ export default function Footer() {
             backgroundColor: "rgba(0, 0, 0, 0.2)",
           }}
         >
-          &copy; {new Date().getFullYear()} Copyright:{" "}
+          &copy; {new Date().getFullYear()} Copyright - {" "}
           <a className="text-dark" href="/#">
-            CIAo Taxi Service
+            CIAo Cab Service
           </a>
         </div>
       </MDBFooter>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../assets/css/Navbar.css";
-import logo from "../assets/images/Logo.png";
+import logo from "../assets/images/HomeLogo.png";
 import {
   MDBContainer,
   MDBNavbar,
@@ -48,6 +48,7 @@ export default function Navbar() {
 
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav
+              style={{paddingRight:"160px"}}
               className="justify-content-center text-center mb-2 mb-lg-0"
               onClick={handleNavLinkClick}
             >

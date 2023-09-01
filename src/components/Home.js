@@ -29,10 +29,7 @@ const db = getDatabase();
 const useStyles = makeStyles(() => ({
   form: {},
   card1: {
-    border: "2px solid #002984",
-  },
-  card2: {
-    border: "2px solid #ba000d",
+    border: "2px solid #4B1E8F",
   },
 }));
 
@@ -111,7 +108,7 @@ export default function Home() {
   return (
     <section id="home" className="home">
       <div style={{ padding: 16, margin: "auto", maxWidth: 800 }}>
-        <h2 style={{ textAlign: "center" }}>Book Your CIAo Cab or Call Driver</h2>
+        <h2 style={{ textAlign: "center" }}>Book Your Cab and Call Driver</h2>
         <form onSubmit={handleSubmit}>
           <Card
             className={classes.card1}
@@ -169,7 +166,9 @@ export default function Home() {
                     pattern="[0-9]{10}"
                     onChange={handleChange}
                     value={formData.phoneNumber}
-                    onInvalid={(e) => e.target.setCustomValidity("Enter 10 digit number")}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Enter 10 digit number")
+                    }
                   />
                 </Grid>
                 <Grid item xs={12} style={{ marginTop: "20px" }}>
@@ -187,19 +186,19 @@ export default function Home() {
                     >
                       <FormControlLabel
                         value="Mini"
-                        control={<Radio />}
+                        control={<Radio style={{ color: "#4B1E8F" }} />}
                         label="Mini"
                       />
 
                       <FormControlLabel
                         value="Sedan"
-                        control={<Radio />}
+                        control={<Radio style={{ color: "#4B1E8F" }} />}
                         label="Sedan"
                       />
 
                       <FormControlLabel
                         value="XUV"
-                        control={<Radio />}
+                        control={<Radio style={{ color: "#4B1E8F" }} />}
                         label="XUV"
                       />
                     </RadioGroup>
@@ -236,10 +235,15 @@ export default function Home() {
             </CardContent>
             <CardActions>
               <Button
-                style={{ width: "550px", margin: "0 auto", display: "flex" }}
+                style={{
+                  width: "550px",
+                  margin: "0 auto",
+                  display: "flex",
+                  backgroundColor: "#4B1E8F",
+                  color: "white",
+                }}
                 size="large"
                 variant="contained"
-                color="primary"
                 type="submit"
               >
                 Book Your Taxi

@@ -20,16 +20,16 @@ function App() {
       right: theme.spacing(2),
       background: "#00a884",
       "&:hover": {
-        backgroundColor: "#00a884",
+        backgroundColor: "#02cfa2",
       },
     },
     fabphone: {
       position: "fixed",
       bottom: theme.spacing(10),
       right: theme.spacing(2),
-      background: "#243296",
+      background: "#4B1E8F",
       "&:hover": {
-        backgroundColor: "#243296",
+        backgroundColor: "#6c2bcf",
       },
     },
   }));
@@ -54,7 +54,7 @@ function App() {
         {/* <PageNotFound title="Ithu tha thavarana visayam" /> */}
         <Fab
           color="primary"
-          aria-label="add"
+          aria-label="whatsApp"
           className={classes.fabwhatsapp}
           onClick={handleWhatsApp}
         >
@@ -62,7 +62,7 @@ function App() {
         </Fab>
         <Fab
           color="primary"
-          aria-label="add"
+          aria-label="makeCall"
           className={classes.fabphone}
           onClick={handlePhoneCall}
         >

@@ -1,14 +1,15 @@
 .nav {
-  min-height: 60px !important;
+  min-height: 70px !important;
   padding-top: 5px !important;
   padding-bottom: 5px !important;
-  background-color: #e8aa23;
+  background-color: #ffc93c;
 }
 .navlink {
   color: black;
   padding: 5px;
-  margin: 0px 5px 0px 5px;
+  margin: 0px 15px 0px 15px;
   border-radius: 5px;
+  font-size: large;
 }
 
 .navlink:hover {
