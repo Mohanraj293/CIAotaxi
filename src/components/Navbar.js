@@ -48,7 +48,6 @@ export default function Navbar() {
 
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav
-              style={{paddingRight:"160px"}}
               className="justify-content-center text-center mb-2 mb-lg-0"
               onClick={handleNavLinkClick}
             >
