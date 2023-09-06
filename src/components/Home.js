@@ -27,9 +27,33 @@ import { getDatabase, ref, set } from "firebase/database";
 
 const db = getDatabase();
 const useStyles = makeStyles(() => ({
-  form: {},
+  form: {
+    "& .MuiInputBase-input": {
+      color: "black", // Change the text color here
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#4B1E8F", // Change the underline color when focused
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#4B1E8F", // Label text color when focused
+    },
+  },
+  form1: {
+    "& .MuiInputBase-input": {
+      color: "black", // Change the text color here
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#00a884", // Change the underline color when focused
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#00a884", // Label text color when focused
+    },
+  },
   card1: {
     border: "2px solid #4B1E8F",
+  },
+  card2: {
+    border: "2px solid #00a884",
   },
 }));
 
@@ -37,6 +61,21 @@ export default function Home() {
   const ChildRef = useRef();
   const classes = useStyles();
 
+  const [isCab, setIscab] = useState(true);
+  const [variant, setVariant] = useState("contained");
+  const [variant1, setVariant1] = useState("outlined");
+
+  const handleVariant = () => {
+    setIscab(true);
+    setVariant("contained");
+    setVariant1("outlined");
+  };
+
+  const handleVariant1 = () => {
+    setIscab(false);
+    setVariant1("contained");
+    setVariant("outlined");
+  };
   const [formData, setFormData] = useState({
     id: "",
     from: "",
@@ -74,7 +113,7 @@ export default function Home() {
       to: formData.to,
       name: formData.name,
       phoneNumber: formData.phoneNumber,
-      vType: formData.vType,
+      vType: isCab ? formData.vType : "Call Driver",
       pickUpDate: format(formData.pickUpDate, "dd/MM/yyyy"),
       pickUptime: format(formData.pickUpDate, "HH:mm"),
       isPickupCompleted: false,
@@ -94,10 +133,7 @@ export default function Home() {
           pickUptime: new Date(),
           takeRide: 0,
         });
-        ChildRef.current.handleOpen(
-          "Your cab is booked..!",
-          "The assigned driver will contact you soon..!"
-        );
+        ChildRef.current.handleOpen(msgTitle, msgDesc);
       })
       .catch(() => {
         ChildRef.current.handleOpen("Something Went Wrong", "Pls Try Again");
@@ -105,22 +141,82 @@ export default function Home() {
   };
 
   document.title = "CIAo Taxi";
+
+  const btnContained = {
+    background: "#4B1E8F",
+    color: "white",
+  };
+
+  const btnOutlined = {
+    borderColor: "#4B1E8F",
+    color: "#4B1E8F",
+  };
+
+  const btnContained1 = {
+    background: "#00a884",
+    color: "white",
+  };
+
+  const btnOutlined1 = {
+    borderColor: "#00a884",
+    color: "#00a884",
+  };
+
+  const msgTitle = isCab
+    ? "Your cab is booked now..!"
+    : "Your call driver is booked now..!";
+  const msgDesc = isCab
+    ? "Assigned cab driver will contact you soon..!"
+    : "Assigned call driver will contact you soon..!";
+    
   return (
     <section id="home" className="home">
       <div style={{ padding: 16, margin: "auto", maxWidth: 800 }}>
         <h2 style={{ textAlign: "center" }}>Book Your Cab and Call Driver</h2>
+        <Grid container spacing={2} className="d-flex justify-content-center">
+          <Grid item>
+            <Button
+              variant={variant}
+              onClick={handleVariant}
+              style={isCab ? btnContained : btnOutlined}
+            >
+              CIAo cab
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              variant={variant1}
+              onClick={handleVariant1}
+              style={!isCab ? btnContained1 : btnOutlined1}
+            >
+              Call Driver
+            </Button>
+          </Grid>
+        </Grid>
         <form onSubmit={handleSubmit}>
           <Card
-            className={classes.card1}
+            className={isCab ? classes.card1 : classes.card2}
             variant="outlined"
             style={{ marginTop: "20px" }}
           >
             <CardContent>
               <Grid container alignItems="flex-start" spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    className={isCab ? classes.form : classes.form1}
+                    fullWidth
+                    required
+                    id="standard-basic3"
+                    label="Name"
+                    name="name"
+                    onChange={handleChange}
+                    value={formData.name}
+                  />
+                </Grid>
                 <Grid item xs={6}>
                   <TextField
                     fullWidth
-                    className={classes.form}
+                    className={isCab ? classes.form : classes.form1}
                     required
                     id="standard-basic1"
                     label="From"
@@ -133,7 +229,7 @@ export default function Home() {
                 <Grid item xs={6}>
                   <TextField
                     fullWidth
-                    className={classes.form}
+                    className={isCab ? classes.form : classes.form1}
                     required
                     id="standard-basic2"
                     label="To"
@@ -144,19 +240,7 @@ export default function Home() {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    className={classes.form}
-                    fullWidth
-                    required
-                    id="standard-basic3"
-                    label="Name"
-                    name="name"
-                    onChange={handleChange}
-                    value={formData.name}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    className={classes.form}
+                    className={isCab ? classes.form : classes.form1}
                     fullWidth
                     required
                     id="standard-basic4"
@@ -171,42 +255,47 @@ export default function Home() {
                     }
                   />
                 </Grid>
-                <Grid item xs={12} style={{ marginTop: "20px" }}>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">
-                      Select your vehicle type
-                    </FormLabel>
-                    <RadioGroup
-                      aria-label="vehicletype"
-                      value={formData.vType}
-                      type="radio"
-                      name="vType"
-                      onChange={handleChange}
-                      row
-                    >
-                      <FormControlLabel
-                        value="Mini"
-                        control={<Radio style={{ color: "#4B1E8F" }} />}
-                        label="Mini"
-                      />
+                {isCab && (
+                  <Grid item xs={12} style={{ marginTop: "20px" }}>
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Select your vehicle type
+                      </FormLabel>
+                      <RadioGroup
+                        aria-label="vehicletype"
+                        value={formData.vType}
+                        type="radio"
+                        name="vType"
+                        onChange={handleChange}
+                        row
+                      >
+                        <FormControlLabel
+                          value="Mini"
+                          control={<Radio style={{ color: "#4B1E8F" }} />}
+                          label="Mini"
+                        />
 
-                      <FormControlLabel
-                        value="Sedan"
-                        control={<Radio style={{ color: "#4B1E8F" }} />}
-                        label="Sedan"
-                      />
+                        <FormControlLabel
+                          value="Sedan"
+                          control={<Radio style={{ color: "#4B1E8F" }} />}
+                          label="Sedan"
+                        />
 
-                      <FormControlLabel
-                        value="XUV"
-                        control={<Radio style={{ color: "#4B1E8F" }} />}
-                        label="XUV"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
+                        <FormControlLabel
+                          value="XUV"
+                          control={<Radio style={{ color: "#4B1E8F" }} />}
+                          label="XUV"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                  </Grid>
+                )}
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                   <Grid item xs={6}>
                     <DatePicker
+                      className={
+                        isCab ? classes.customDatePicker : classes.form1
+                      }
                       fullWidth
                       margin="normal"
                       id="date-picker-dialog"
@@ -221,6 +310,9 @@ export default function Home() {
                   </Grid>
                   <Grid item xs={6}>
                     <TimePicker
+                      className={
+                        isCab ? classes.customDatePicker : classes.form1
+                      }
                       fullWidth
                       name="pickUptime"
                       margin="normal"
@@ -239,14 +331,14 @@ export default function Home() {
                   width: "550px",
                   margin: "0 auto",
                   display: "flex",
-                  backgroundColor: "#4B1E8F",
+                  backgroundColor: isCab ? "#4B1E8F" : "#00a884",
                   color: "white",
                 }}
                 size="large"
                 variant="contained"
                 type="submit"
               >
-                Book Your Taxi
+                {isCab ? "Book Your Taxi" : "Book your Driver"}
               </Button>
             </CardActions>
           </Card>
