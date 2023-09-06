@@ -6,14 +6,13 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBJGyCCiYI4yK3be2_rMZxN054rX1BObSg",
-  authDomain: "ciao-taxi.firebaseapp.com",
-  databaseURL: "https://ciao-taxi-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "ciao-taxi",
-  storageBucket: "ciao-taxi.appspot.com",
-  messagingSenderId: "924877746365",
-  appId: "1:924877746365:web:be2e7bd721e565295c87d4",
-  measurementId: "G-L39T1KBYWJ"
+  apiKey: "AIzaSyDFylYoxAOEAqmU3Y0-f1GlORGqkCImEYo",
+  authDomain: "ciao-9e33a.firebaseapp.com",
+  databaseURL: "https://ciao-9e33a-default-rtdb.firebaseio.com",
+  projectId: "ciao-9e33a",
+  storageBucket: "ciao-9e33a.appspot.com",
+  messagingSenderId: "992037782511",
+  appId: "1:992037782511:web:9be6b699969c4994746c1a"
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
