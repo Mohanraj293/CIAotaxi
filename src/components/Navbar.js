@@ -58,9 +58,8 @@ export default function Navbar() {
               <Link className="navlink" to="#terms" smooth>
                 Terms and Conditions
               </Link>
-
-              <Link className="navlink" to="#contact" smooth>
-                Contact Us
+              <Link className="navlink" to="#services" smooth>
+                Our Services
               </Link>
             </MDBNavbarNav>
           </MDBCollapse>

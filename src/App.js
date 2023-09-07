@@ -49,7 +49,6 @@ function App() {
         <Home title="Home" />
         {/* <Route path="/tarrifs" element={<Tarrifs title="Tarrifs"/>}></Route> */}
         <TermsAndConditions title="Terms And Conditions" />
-        <ContactUs title="contact Us" />
         <Footer />
         {/* <PageNotFound title="Ithu tha thavarana visayam" /> */}
         <Fab
